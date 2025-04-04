@@ -1,7 +1,7 @@
 
 void displayCartesianCoordinateSystem()
 {
-  final int Gap = 64;
+  final int Gap = 32;
   
   background(0);
   
@@ -69,7 +69,7 @@ float g_vy = 2;
 
 void setup()
 {
-  size(2049, 2049, P2D);
+  size(1025, 1025, P2D);
   g_img = loadImage("image.png");
 }
 
@@ -94,5 +94,5 @@ void draw()
   
   applyInvLogPolarMapping();
   
-  saveFrame("frames/######.png");
+  //saveFrame("frames/######.png");
 }
