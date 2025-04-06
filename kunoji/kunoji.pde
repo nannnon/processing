@@ -21,7 +21,7 @@ void setup()
 
 void draw()
 {
-  if (g_counter++ % 100 == 0)
+  if (g_counter++ % 5 == 0)
   {
     int i = int(random(g_kunojis.size()));
     g_kunojis.get(i).startRotation();

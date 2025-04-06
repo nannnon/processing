@@ -1,6 +1,6 @@
 class MyKunoji
 {
-  final static float Size = 128;
+  final static float Size = 64;
   
   final float _x;
   final float _y;
@@ -32,11 +32,11 @@ class MyKunoji
   
   void update()
   {
-    final int MaxCounter = 100;
+    final int MaxCounter = 50;
     
     if (_rotate)
     {
-      float omega = float(_counter) / MaxCounter * PI / 2 * _dir;
+      float omega = _dir * (PI / 2) / MaxCounter;
       _theta += omega;
       
       ++_counter;
