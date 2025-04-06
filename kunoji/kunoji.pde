@@ -34,4 +34,6 @@ void draw()
     k.update();
     k.display();
   }
+  
+  saveFrame("frames/######.png");
 }
