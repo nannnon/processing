@@ -59,6 +59,7 @@ class MyKunoji
     noStroke();
     rect(-Wide / 2, -Wide / 2, Size / 2 + Wide / 2, Wide);
     rect(-Wide / 2, -Wide / 2, Wide, Size / 2 + Wide);
+    rect(-Size / 2, -Wide / 2, Size / 2 + Wide / 2, Wide);
     
     popMatrix();
   }
