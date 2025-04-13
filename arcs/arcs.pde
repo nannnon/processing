@@ -29,4 +29,6 @@ void draw()
     a.update();
     a.display();
   }
+  
+  //saveFrame("frames/######.png");
 }
