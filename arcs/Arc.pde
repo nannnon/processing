@@ -18,7 +18,7 @@ class Arc
     _bandColors = new ArrayList<Integer>();
     for (int i = 0; i < _bandsNum; ++i)
     {
-      _bandColors.add(color(random(255),random(255),random(255)));
+      _bandColors.add(color(i * 1.0 / _bandsNum, 1, 1));
     }
   }
   

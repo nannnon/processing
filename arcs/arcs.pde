@@ -5,6 +5,7 @@ void setup()
 {
   // X→ Y↓
   size(1024, 1024, P2D);
+  colorMode(HSB, 1, 1, 1);
   
   // Arc(float omega, float r0, float r1, int bandsNum)
   final int Num = 12;
