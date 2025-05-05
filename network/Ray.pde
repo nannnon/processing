@@ -28,6 +28,11 @@ class Ray
   
   void update()
   {
+    if (_from == null || _to == null)
+    {
+      return;
+    }
+    
     // 軌跡をずらす
     for (int i = _locus.length - 1; i > 0; --i)
     {

@@ -8,7 +8,7 @@ void setup()
   size(1024, 1024, P2D);
   
   // ノードをばらまく
-  for (int i = 0; i < 400; ++i)
+  for (int i = 0; i < 800; ++i)
   {
     g_nodes.add(new Node(random(width), random(height)));
   }
@@ -16,11 +16,11 @@ void setup()
   // 隣接したノードを関連付ける
   for (Node n : g_nodes)
   {
-    n.addAdjacentNodes(g_nodes, 80);
+    n.addAdjacentNodes(g_nodes, 30);
   }
   
   // 光を放つ
-  for (int i = 0; i < 10; ++i)
+  for (int i = 0; i < 100; ++i)
   {
     int n = int(random(g_nodes.size()));
     g_rays.add(new Ray(g_nodes.get(n)));
