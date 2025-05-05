@@ -16,11 +16,11 @@ void setup()
   // 隣接したノードを関連付ける
   for (Node n : g_nodes)
   {
-    n.addAdjacentNodes(g_nodes, 30);
+    n.addAdjacentNodes(g_nodes, 80);
   }
   
   // 光を放つ
-  for (int i = 0; i < 100; ++i)
+  for (int i = 0; i < 10; ++i)
   {
     int n = int(random(g_nodes.size()));
     g_rays.add(new Ray(g_nodes.get(n)));
