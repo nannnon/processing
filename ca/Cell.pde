@@ -99,7 +99,6 @@ class Cell
       final float F = 0.005;
       _velocity -= F * _velocity;
       
-      // 上下左右との変位差から加速度を算出して加算
       for (int i = -1; i <= 1; ++i)
       {
         for (int j = -1; j <= 1; ++j)
@@ -109,9 +108,18 @@ class Cell
             continue;
           }
           
-          if ((i + j) % 2 != 0)
+          final float K = 0.05;
+          
+          int u = _x + i;
+          int v = _z + j;
+          if (u == -1 || u == CellsNum || v == -1 || v == CellsNum)
+          {
+            // 画面端は固定端として処理
+            _velocity += K * (0 - _height);
+          }
+          else if ((i + j) % 2 != 0)
           { 
-            final float K = 0.05;
+            // 上下左右との変位差から加速度を算出して加算
             _velocity += K * (_neighbors[i + 1][j + 1].getHeight() - _height);
           }
         }
@@ -122,13 +130,9 @@ class Cell
   void display()
   {
     // 状態が変わったら波を立てる
-    final float WaveStrength = 100;
-    if (_state && !_nextState)
+    if (!_state && _nextState)
     {
-      _velocity -= WaveStrength;
-    }
-    else if (!_state && _nextState)
-    {
+      final float WaveStrength = 0.125;
       _velocity += WaveStrength;
     }
     
@@ -137,8 +141,8 @@ class Cell
     
     // 高さを描画用にclipする
     float h = _height;
+    final float MaxHRange = 50;
     {
-      final float MaxHRange = 30;
       if (h > MaxHRange)
       {
         h = MaxHRange;
@@ -153,11 +157,12 @@ class Cell
     stroke(0);
     if (_state)
     {
-      fill(0, 255, 0);
+      fill(0.875, 1, 1);
     }
     else
     {
-      fill(128, 128, 128);
+      float hue = map(h, 0, 2 * MaxHRange, 0.75, 0);
+      fill(hue, 1, 1);
     }
 
     pushMatrix();    

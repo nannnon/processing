@@ -7,6 +7,7 @@ void setup()
   // X← Y↓ Z↑
   size(1024, 1024, P3D);
   perspective(PI / 3, float(width) / float(height), 0.1, 2000);
+  colorMode(HSB, 1, 1, 1);
   
   // セルを生成
   g_cells = new Cell[CellsNum][CellsNum];
@@ -56,7 +57,7 @@ void setup()
 void draw()
 {
   float len = CellSize * CellsNum;
-  camera(len / 2, -100, -100, len / 2, 0, len / 2, 0, 1, 0);
+  camera(len / 2, -100, len / 2 - 100, len / 2, 0, len / 2, 0, 1, 0);
   
   background(0);
   
