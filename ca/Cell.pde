@@ -141,18 +141,17 @@ class Cell
     
     // 高さを描画用にclipする
     float h = _height;
-    final float MaxHRange = 50;
+    final float MaxHRange = 90;
+    final float MinHRange = -20;
+    if (h > MaxHRange)
     {
-      if (h > MaxHRange)
-      {
-        h = MaxHRange;
-      }
-      else if (h < -MaxHRange)
-      {
-        h = -MaxHRange;
-      }
-      h += MaxHRange;
+      h = MaxHRange;
     }
+    else if (h < MinHRange)
+    {
+      h = MinHRange;
+    }
+    h -= MinHRange;
     
     stroke(0);
     if (_state)
@@ -161,7 +160,7 @@ class Cell
     }
     else
     {
-      float hue = map(h, 0, 2 * MaxHRange, 0.75, 0);
+      float hue = map(h, 0, MaxHRange - MinHRange, 0.75, 0);
       fill(hue, 1, 1);
     }
 
