@@ -22,32 +22,3 @@ boid
   矩形バー黄～赤
 図形を多数描く。既存の図形と重なる時はその部分を反転するなどする
 木が成長
-触手
-  外部設計
-    中央から外側へと触手が何本か。にょろにょろしたり渦巻いたり
-    矩形が連結して触手を成す
-      外側に行くほど小さい矩形
-      各矩形は、内側から外側へと色がグラデーションする
-  内部設計
-    Branch
-      MaxLevel = 10
-      MaxTheta = HALF_PI
-      MaxWidth
-      MaxHeight
-      MaxChildlenNum = {1, 1, 1, 1, 1, 2, 3...
-
-      level
-      x
-      y
-      direction
-      width
-      height
-      theta
-      omega
-      //color
-      ArrayList<Branch> childlen
-
-      Branch(level, x, y, direction)
-
-      update(x, y)
-      display()
