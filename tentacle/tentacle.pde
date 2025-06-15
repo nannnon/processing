@@ -16,4 +16,6 @@ void draw()
   background(255);
   g_tentacle.update(g_tentacleX, g_tentacleY, 0);
   g_tentacle.display();
+  
+  //saveFrame("frames/######.png");
 }
