@@ -27,9 +27,8 @@ class Branch
   float _baseTheta, _theta, _omega;
   final float _width, _height;
   ArrayList<Branch> _children;
-  float _color;
   
-  Branch(int level, float x, float y, float baseTheta, float c)
+  Branch(int level, float x, float y, float baseTheta)
   {
     _level = level;
     _x = x;
@@ -40,7 +39,6 @@ class Branch
     _width = MaxWidth / (_level + 1);
     _height = MaxHeight / (_level + 1);
     _children = new ArrayList<Branch>();
-    _color = c;
     
     if (_level == 0)
     {
@@ -51,7 +49,7 @@ class Branch
         float theta2 = step * i;
         float x2 = _x + _height * cos(theta2);
         float y2 = _y + _height * sin(theta2);
-        _children.add(new Branch(_level + 1, x2, y2, theta2, _color));
+        _children.add(new Branch(_level + 1, x2, y2, theta2));
       }
     }
     else if (_level <= MaxLevel)
@@ -60,7 +58,7 @@ class Branch
       for (int i = 0; i < num; ++i)
       {
         Edge edge = getEdge();
-        _children.add(new Branch(_level + 1, edge.x, edge.y, edge.theta, _color));
+        _children.add(new Branch(_level + 1, edge.x, edge.y, edge.theta));
       }
     }
   }
@@ -74,12 +72,11 @@ class Branch
     return new Edge(x2, y2, theta2);
   }
   
-  void update(float x, float y, float baseTheta, float c)
+  void update(float x, float y, float baseTheta)
   {
     _x = x;
     _y = y;
     _baseTheta = baseTheta;
-    _color = c;
     
     if (_level == 0)
     {
@@ -90,7 +87,7 @@ class Branch
         float theta2 = step * i;
         float x2 = _x + _height * cos(theta2);
         float y2 = _y + _height * sin(theta2);
-        _children.get(i).update(x2, y2, theta2, _color);
+        _children.get(i).update(x2, y2, theta2);
       }
     }
     else
@@ -104,7 +101,7 @@ class Branch
       for (Branch b : _children)
       {
         Edge edge = getEdge();
-        b.update(edge.x, edge.y, edge.theta, _color);
+        b.update(edge.x, edge.y, edge.theta);
       }
     }
   }
@@ -114,21 +111,13 @@ class Branch
     if (_level == 0)
     {
       stroke(0);
-      
-      colorMode(HSB);
-      fill(255 * _color, 255, 255);
-      colorMode(RGB);
-      
+      fill(255);
       ellipse(_x, _y, 2 * _height, 2 * _height);
     }
     else
     {
       stroke(0);
-      
-      colorMode(HSB);
-      float h = (_color + noise(_level / 5.0)) / 2.0;
-      fill(255 * h, 255, 255);
-      colorMode(RGB);
+      fill(255);
       
       pushMatrix();
       translate(_x, _y);
