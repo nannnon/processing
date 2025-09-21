@@ -22,9 +22,14 @@ abstract class Primitive
     _deltaAngle = dAngle;
   }
   
+  PVector getPosition()
+  {
+    return _position;
+  }
+  
   boolean isHit()
   {
-    if (isHit(AreaSize) || isHit(g_primitives))
+    if (isHit(g_areaSize) || isHit(g_primitives))
     {
       return true;
     }
