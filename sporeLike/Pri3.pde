@@ -3,7 +3,7 @@ class Pri3 extends Primitive
   Pri3(PVector pos, PVector vel, float dAngle)
   {
     // float hcRadius, PVector pos, PVector vel, float dAngle
-    super(180, pos, vel, dAngle);
+    super(300, pos, vel, dAngle);
   }
   
   @Override
