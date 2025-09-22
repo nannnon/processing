@@ -142,15 +142,15 @@ void draw()
     }
     else if (g_z < MaxZ / 5)
     {
-      g_z += 2;
+      g_z += 4;
     }
     else if (g_z < MaxZ / 2)
     {
-      g_z += 4;
+      g_z += 8;
     }
     else if (g_z < MaxZ)
     {
-      g_z += 8;
+      g_z += 16;
     }
     //g_z = MaxZ;
     
@@ -176,5 +176,5 @@ void draw()
   line(g_areaSize.x, g_areaSize.y, 0, g_areaSize.y);
   line(0, g_areaSize.y, 0, 0);
   
-  saveFrame("frames/######.png");
+  //saveFrame("frames/######.png");
 }
